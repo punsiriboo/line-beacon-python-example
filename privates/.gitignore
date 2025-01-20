@@ -1,8 +1,2 @@
 # Private Inforamtion Data
-*.json
-*.ndjson
-
-# Script to convert to NDJSON
-*.py 
-*.txt
 *.yml

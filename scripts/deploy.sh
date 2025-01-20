@@ -14,4 +14,4 @@ gcloud functions deploy $FUNCTION_NAME \
     --source=. \
     --entry-point=$ENTRY_POINT \
     --allow-unauthenticated \
-    --env-vars-file=privates/line_secret.yml \
+    --env-vars-file=./privates/line_secret.yml \

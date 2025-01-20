@@ -21,12 +21,8 @@ from linebot.v3.messaging import (
 )
 
 
-
-CHANNEL_ACCESS_TOKEN = os.environ["CHANNEL_ACCESS_TOKEN"]
-CHANNEL_SECRET = os.environ["CHANNEL_SECRET"]
-
-configuration = Configuration(CHANNEL_ACCESS_TOKEN)
-handler = WebhookHandler(CHANNEL_SECRET)
+configuration = Configuration(access_token=os.environ["CHANNEL_ACCESS_TOKEN"])
+handler = WebhookHandler(channel_secret=os.environ["CHANNEL_SECRET"])
 
 api_client = ApiClient(configuration)
 line_bot_api = MessagingApi(api_client)
@@ -51,25 +47,19 @@ def callback(request):
 
     return "OK"
 
-@handler.add(MessageEvent, message=TextMessageContent)
-def handle_text_message(event, message):
-    line_bot_api.reply_message(
-        event.reply_token,
-        ReplyMessageRequest(
-            reply_token=event.reply_token,
-            messages=[TextMessage(text=message.text)],
-        )
-    )
-    
 
-    
 @handler.add(BeaconEvent, message=BeaconContent)
-def handle_beacon(event, message):
+def handle_beacon(event, beacon_content):
     line_bot_api.reply_message(
         event.reply_token,
         ReplyMessageRequest(
             reply_token=event.reply_token,
-            messages=[TextMessage(text=message.type)],
-        )
+            messages=[
+                TextMessage(
+                    text="Got beacon event type={} from hwid={}".format(
+                        beacon_content.type, beacon_content.hwid
+                    )
+                )
+            ],
+        ),
     )
-
