@@ -7,7 +7,6 @@ from linebot.v3.webhooks import (
     MessageEvent,
     TextMessageContent,
     BeaconEvent,
-    BeaconContent,
 )
 
 from linebot.v3.messaging import (
@@ -15,9 +14,14 @@ from linebot.v3.messaging import (
     ApiClient,
     MessagingApi,
     ReplyMessageRequest,
-    FlexMessage,
-    FlexContainer,
+    ShowLoadingAnimationRequest,
     TextMessage,
+)
+
+from generate_reply_message import (
+    generate_flex_message_by_user_demographic,
+    generate_flex_message_by_hwid,
+    get_event_flex_message,
 )
 
 
@@ -48,18 +52,54 @@ def callback(request):
     return "OK"
 
 
-@handler.add(BeaconEvent, message=BeaconContent)
-def handle_beacon(event, beacon_content):
+@handler.add(MessageEvent, message=TextMessageContent)
+def handle_text_message(event):
+    line_bot_api.show_loading_animation(
+        ShowLoadingAnimationRequest(chat_id=event.source.user_id)
+    )
+
+    text = event.message.text
     line_bot_api.reply_message(
-        event.reply_token,
         ReplyMessageRequest(
             reply_token=event.reply_token,
             messages=[
-                TextMessage(
-                    text="Got beacon event type={} from hwid={}".format(
-                        beacon_content.type, beacon_content.hwid
-                    )
-                )
+                TextMessage(text=text),
+            ],
+        )
+    )
+
+
+@handler.add(BeaconEvent)
+def handle_beacon(event: BeaconEvent):
+
+    text_message = (
+        TextMessage(
+            text="Got beacon event type={} from hwid={}".format(
+                event.beacon.type, event.beacon.hwid
+            )
+        ),
+    )
+
+    flex_message_by_user_demographic = generate_flex_message_by_user_demographic(
+        event.source.user_id
+    )
+    
+    flex_message_by_hardwear_id = generate_flex_message_by_hwid(
+        event.beacon.hwid
+    )
+    
+    flex_event_message = get_event_flex_message(event_name="data_and_ai")
+
+
+
+    line_bot_api.reply_message(
+        ReplyMessageRequest(
+            reply_token=event.reply_token,
+            messages=[
+                text_message,
+                # flex_message_by_user_demographic,
+                # flex_message_by_hardwear_id,
+                # flex_event_message
             ],
         ),
     )

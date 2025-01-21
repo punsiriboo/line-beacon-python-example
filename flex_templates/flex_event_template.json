@@ -1,0 +1,67 @@
+{
+    "type": "bubble",
+    "hero": {
+        "type": "image",
+        "url": "https://p-u.popcdn.net/attachments/images/000/080/693/large/3009_Speaker_PR_-_Slide_FB_Cover_%281920x1080px%29.jpg?1727686517",
+        "size": "full",
+        "aspectRatio": "20:13",
+        "aspectMode": "cover"
+    },
+    "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+            {
+                "type": "text",
+                "text": "ยินดีต้อนรับสู่ Data + AI Day : Connect for Better Insights",
+                "weight": "bold",
+                "size": "xl",
+                "wrap": true
+            },
+            {
+                "type": "text",
+                "text": "กิจกรรมนี้จะเปิดโอกาสให้คุณได้เรียนรู้และเชื่อมต่อกับผู้คนในแวดวงเดียวกัน",
+                "wrap": true,
+                "margin": "md"
+            },
+            {
+                "type": "separator",
+                "margin": "md"
+            },
+            {
+                "type": "box",
+                "layout": "vertical",
+                "margin": "lg",
+                "contents": [
+                    {
+                        "type": "button",
+                        "style": "primary",
+                        "action": {
+                            "type": "uri",
+                            "label": "ลงทะเบียนเข้าร่วม",
+                            "uri": "https://example.com/register"
+                        }
+                    },
+                    {
+                        "type": "button",
+                        "style": "link",
+                        "action": {
+                            "type": "uri",
+                            "label": "ดูรายละเอียดกิจกรรม",
+                            "uri": "https://example.com/event_details"
+                        }
+                    },
+                    {
+                        "type": "button",
+                        "style": "link",
+                        "action": {
+                            "type": "uri",
+                            "label": "ดาวน์โหลดเอกสาร",
+                            "uri": "https://example.com/documents"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

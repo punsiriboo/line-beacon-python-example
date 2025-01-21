@@ -1,0 +1,96 @@
+{
+    "type": "bubble",
+    "hero": {
+        "type": "image",
+        "url": "https://cms.dmpcdn.com/travel/2023/07/21/b49e90f0-277d-11ee-bd8c-75c68f6ec73a_webp_original.webp",
+        "size": "full",
+        "aspectRatio": "20:13",
+        "aspectMode": "cover",
+        "action": {
+            "type": "uri",
+            "uri": "https://line.me/"
+        }
+    },
+    "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "md",
+        "contents": [
+            {
+                "type": "text",
+                "text": "ภูเขาทอง วัดสระเกศ ราชวรมหาวิหาร ",
+                "wrap": true,
+                "weight": "bold",
+                "gravity": "center",
+                "size": "xl"
+            },
+            {
+                "type": "box",
+                "layout": "vertical",
+                "margin": "lg",
+                "spacing": "sm",
+                "contents": [
+                    {
+                        "type": "box",
+                        "layout": "baseline",
+                        "spacing": "sm",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "เปิดให้เข้าชม:",
+                                "color": "#aaaaaa",
+                                "size": "sm",
+                                "flex": 2
+                            },
+                            {
+                                "type": "text",
+                                "text": "08.30-15.30 น.",
+                                "wrap": true,
+                                "size": "xs",
+                                "color": "#666666",
+                                "flex": 4
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "box",
+                "layout": "vertical",
+                "margin": "xxl",
+                "contents": [
+                    {
+                        "type": "image",
+                        "url": "https://developers-resource.landpress.line.me/fx/img/linecorp_code_withborder.png",
+                        "aspectMode": "cover",
+                        "size": "xl",
+                        "margin": "md"
+                    },
+                    {
+                        "type": "text",
+                        "text": "ให้เจ้าหน้าที่แสกนเพื่อ check-in รับของที่ระลึก",
+                        "color": "#aaaaaa",
+                        "wrap": true,
+                        "margin": "xxl",
+                        "size": "xs"
+                    }
+                ]
+            }
+        ]
+    },
+    "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+            {
+                "type": "button",
+                "action": {
+                    "type": "uri",
+                    "label": "ชมวิดีโอบรรยายประวัติ",
+                    "uri": "http://linecorp.com/"
+                },
+                "style": "primary"
+            }
+        ]
+    }
+}
